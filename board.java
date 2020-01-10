@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class board{
     private boolean end = false;
     private boolean seri = false;
-    private char[] arr = {'1','2','3','4','5','6','7','8','9'};
+    private char[] arr = {' ',' ',' ',' ',' ',' ',' ',' ',' '};
     private char currplay = 'O';
     private int count = 0;
 
@@ -37,7 +37,7 @@ public class board{
         int count = 1;
         for (int i = 0; i<9; i++){
             if (arr[i] != 'O' && arr[i] != 'X'){
-                System.out.println(count + ". " + arr[i]);
+                System.out.println(count + ". " + (i+1));
                 count++;
             }
         }
@@ -45,21 +45,21 @@ public class board{
 
 
     void check2(){
-        if ((arr[0] == arr[1]) && (arr[1] == arr[2])){
+        if ((arr[0] == arr[1]) && (arr[1] == arr[2]) && (arr[2] != ' ')){
             end = true;
-        } else if ((arr[3] == arr[4]) && (arr[4] == arr[5])){
+        } else if ((arr[3] == arr[4]) && (arr[4] == arr[5]) && (arr[5] != ' ')){
             end = true;
-        } else if ((arr[6] == arr[7]) && (arr[7] == arr[8])){
+        } else if ((arr[6] == arr[7]) && (arr[7] == arr[8]) && (arr[8] != ' ')){
             end = true;
-        } else if ((arr[0] == arr[3]) && (arr[3] == arr[6])){
+        } else if ((arr[0] == arr[3]) && (arr[3] == arr[6]) && (arr[6] != ' ')){
             end = true;
-        } else if ((arr[1] == arr[4]) && (arr[4] == arr[7])){
+        } else if ((arr[1] == arr[4]) && (arr[4] == arr[7]) && (arr[7] != ' ')){
             end = true;
-        } else if ((arr[2] == arr[5]) && (arr[5] == arr[8])){
+        } else if ((arr[2] == arr[5]) && (arr[5] == arr[8]) && (arr[8] != ' ')){
             end = true;
-        }else if ((arr[0] == arr[4]) && (arr[4] == arr[8])){
+        }else if ((arr[0] == arr[4]) && (arr[4] == arr[8]) && (arr[8] != ' ')){
             end = true;
-        } else if ((arr[2] == arr[4]) && (arr[4] == arr[6])){
+        } else if ((arr[2] == arr[4]) && (arr[4] == arr[6]) && (arr[6] != ' ')){
             end = true;
         }
     }
