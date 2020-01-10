@@ -115,8 +115,8 @@ public class board{
             check2();
             if (!end){
                 seri = true;
+                end = true;   
             }
-            end = true;   
         } else {
             check2();
         }
