@@ -2,32 +2,60 @@ import java.util.Scanner;
 
 public class board{
     private boolean end = false;
-    private char[] arr = {' ',' ',' ',' ',' ',' ',' ',' ',' '};
+    private char[] arr = {'1','2','3','4','5','6','7','8','9'};
+    private char currplay = 'O';
 
-    enum idx {
-        A1,A2,A3,B1,B2,B3,C1,C2,C3
+    public void printgiliran(){
+        System.out.println("Giliran pemain " + currplay);
     }
 
-    class player{
-        int num;
-        char simbol;
-
-        public player(char c){
-            simbol = c;
-            if (c == 'O'){
-                num = 1;
-            } else {
-                num = 2;
-            }
-        }
-
-        public char getChar(){
-            return simbol;
-        }
-    }
 
     public void printBoard(){
-        System.Out
+        System.out.println("+---+---+---+");
+        System.out.println("| " + arr[0] +" | " + arr[1] + " | " + arr[2] + " |");
+        System.out.println("+---+---+---+");
+        System.out.println("| " + arr[3] +" | " + arr[4] + " | " + arr[5] + " |");
+        System.out.println("+---+---+---+");
+        System.out.println("| " + arr[6] +" | " + arr[7] + " | " + arr[8] + " |");
+        System.out.println("+---+---+---+");
     }
+
+    public void addVal(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Masukkan nomor kotak yang dituju : ");
+        int d = input.nextInt();
+        
+        arr[d-1] = currplay;
+    }
+
+    public void printEmpty(){
+        System.out.println("Kotak yang tersedia : ");
+
+        int count = 1;
+        for (int i = 0; i<9; i++){
+            if (arr[i] != 'O' && arr[i] != 'X'){
+                System.out.println(count + ". " + arr[i]);
+                count++;
+            }
+        }
+    }
+
+    public boolean check(){
+        return end;
+    }
+
+    public void ganti(){
+        if(currplay == 'O'){
+            currplay = 'X';
+        } else {
+            currplay = 'O';
+        }
+    }
+
+    public void result(){
+        System.out.println("Game selesai");
+        System.out.println("Pemenangnya pemain " + currplay );
+    }
+
 
 }

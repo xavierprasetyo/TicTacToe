@@ -1,7 +1,18 @@
 public class mein {
     public static void main(String[] args){
-        lesclass one = new lesclass(10,"Andi","Waterson");
-        one.inputVal();
-        one.printVal();
+        System.out.println("Selamat datang di Tic Tac Toe !");
+        System.out.println("");
+        
+
+        board bd = new board();
+        while(! bd.check()){
+            bd.printgiliran();
+            bd.printBoard();
+            bd.printEmpty();
+            bd.addVal();
+            bd.ganti();
+        }
+
+        bd.result();
     }
 }
