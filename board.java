@@ -2,11 +2,14 @@ import java.util.Scanner;
 
 public class board{
     private boolean end = false;
+    private boolean seri = false;
     private char[] arr = {'1','2','3','4','5','6','7','8','9'};
     private char currplay = 'O';
+    private int count = 0;
 
     public void printgiliran(){
         System.out.println("Giliran pemain " + currplay);
+        count ++;
     }
 
 
@@ -40,7 +43,36 @@ public class board{
         }
     }
 
+
+    void check2(){
+        if ((arr[0] == arr[1]) && (arr[1] == arr[2])){
+            end = true;
+        } else if ((arr[3] == arr[4]) && (arr[4] == arr[5])){
+            end = true;
+        } else if ((arr[6] == arr[7]) && (arr[7] == arr[8])){
+            end = true;
+        } else if ((arr[0] == arr[3]) && (arr[3] == arr[6])){
+            end = true;
+        } else if ((arr[1] == arr[4]) && (arr[4] == arr[7])){
+            end = true;
+        } else if ((arr[2] == arr[5]) && (arr[5] == arr[8])){
+            end = true;
+        }else if ((arr[0] == arr[4]) && (arr[4] == arr[8])){
+            end = true;
+        } else if ((arr[2] == arr[4]) && (arr[4] == arr[6])){
+            end = true;
+        }
+    }
     public boolean check(){
+        if (count == 9){
+            check2();
+            if (!end){
+                seri = true;
+            }
+            end = true;   
+        } else {
+            check2();
+        }
         return end;
     }
 
@@ -53,8 +85,12 @@ public class board{
     }
 
     public void result(){
-        System.out.println("Game selesai");
+        if (seri) {
+            System.out.println("Game berakhir seri");
+        } else {
+            System.out.println("Game selesai");
         System.out.println("Pemenangnya pemain " + currplay );
+        }
     }
 
 
