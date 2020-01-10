@@ -7,6 +7,7 @@ public class mein {
         while(! bd.check()){
             bd.printgiliran();
             bd.printBoard();
+            bd.makeEmpty();
             bd.printEmpty();
             bd.addVal();
             bd.ganti();
