@@ -1,20 +1,31 @@
 import java.util.Scanner;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class board{
     private boolean end = false;
     private boolean seri = false;
     private char[] arr = {' ',' ',' ',' ',' ',' ',' ',' ',' '};
     private char currplay = 'O';
-    private int count = 0;
-    HashMap<Integer,Integer> kosong = new HashMap<Integer,Integer>();
+    ArrayList<Integer> kosong = new ArrayList<Integer>();
+
+
+    public void initKosong(){
+        kosong.add(0);
+        kosong.add(1);
+        kosong.add(2);
+        kosong.add(3);
+        kosong.add(4);
+        kosong.add(5);
+        kosong.add(6);
+        kosong.add(7);
+        kosong.add(8);
+    }
 
 
 
     public void printgiliran(){
         System.out.println("  Giliran pemain " + currplay);
         System.out.println("");
-        count ++;
     }
 
 
@@ -33,22 +44,11 @@ public class board{
         Scanner input = new Scanner(System.in);
         System.out.print("Masukkan nomor kotak yang dituju : ");
         int d = input.nextInt();
-        int idx = kosong.get(d);
+        int idx = kosong.get(d-1);
         arr[idx] = currplay;
 
-        kosong.clear();
+        kosong.remove(d-1);
     }
-
-    public void makeEmpty(){
-        int count = 1;
-        for (int i = 0; i<9; i++){
-            if (arr[i] == ' '){
-                kosong.put(count,i);
-                count++;
-            }
-        }
-    }
-
 
     String cvt(int a){
         String s = "";
@@ -85,8 +85,8 @@ public class board{
     }
     public void printEmpty(){
         System.out.println("Kotak yang tersedia : ");
-        for (int i : kosong.keySet()){
-            System.out.println(i + ". " + cvt(kosong.get(i)));
+        for (int i = 0; i <kosong.size();i++){
+            System.out.println((i+1) + ". " + cvt(kosong.get(i)));
         }
     }
 
@@ -111,7 +111,7 @@ public class board{
         }
     }
     public boolean check(){
-        if (count == 9){
+        if (kosong.size() == 0){
             check2();
             if (!end){
                 seri = true;

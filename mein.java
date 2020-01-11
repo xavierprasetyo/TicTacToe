@@ -4,10 +4,10 @@ public class mein {
         System.out.println("");
 
         board bd = new board();
+        bd.initKosong();
         while(! bd.check()){
             bd.printgiliran();
             bd.printBoard();
-            bd.makeEmpty();
             bd.printEmpty();
             bd.addVal();
             bd.ganti();
